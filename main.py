@@ -34,9 +34,9 @@ i2c = machine.I2C(sda = pin_sda, scl = pin_scl, freq=400000)
 adc = ads1x15.ADS1015(i2c, ads_address, gain)
 
 while True:
-    for ch in range(0, 4):
+    for ch in range(0, 6):
         muxer.set_channel(ch)
         v_log  = adc.raw_to_v(adc.read(rate,0))
         v_real = adc.raw_to_v(adc.read(rate,1))
         print("MUX_ch: {0}, V_log: {1}, V_real: {2}".format(ch, v_log, v_real))
-        sleep(3)
+        sleep(2)

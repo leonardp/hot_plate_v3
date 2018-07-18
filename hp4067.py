@@ -5,6 +5,7 @@ class HP4067:
         self.pin_s1 = s1
         self.pin_s2 = s2
         self.pin_s3 = s3
+        self.channel = 0
 
     def enable(self):
         return self.pin_en.value(1)
@@ -13,7 +14,11 @@ class HP4067:
         return self.pin_en.value(0)
         
     def set_channel(self, ch):
+        self.channel = ch
         self.pin_s0.value(ch >> 0 & 1)
         self.pin_s1.value(ch >> 1 & 1)
         self.pin_s2.value(ch >> 2 & 1)
         self.pin_s3.value(ch >> 3 & 1)
+
+    def get_channel(self):
+        return self.channel
